@@ -59,15 +59,7 @@ app.include_router(nl_query.router, prefix="/api")
 app.include_router(benchmark.router, prefix="/api")
 app.include_router(vision.router, prefix="/api")
 
-@app.get("/")
-async def root():
-    return {
-        "status": "ok",
-        "app": "CityMind API",
-        "version": "1.0.0",
-        "description": "Smart City Decision Intelligence Platform for PCMC Pune",
-        "demo_mode": os.getenv('DEMO_MODE', 'true').lower() == 'true',
-    }
+# Root route removed so React frontend can be served at /
 
 @app.get("/health")
 async def health():
