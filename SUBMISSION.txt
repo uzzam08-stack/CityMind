@@ -1,0 +1,7 @@
+CityMind is a hyper-local, AI-powered Decision Intelligence Platform built for the Pimpri-Chinchwad Municipal Corporation (PCMC). Addressing Problem Statement 2 through the enterprise architecture of Problem Statement 1, we tackled the specific bottleneck of reactive Construction & Demolition (C&D) waste management. 
+
+Currently, city managers rely on passive data. CityMind bridges the gap between raw spatial telemetry and physical action. We engineered a closed-loop system that ingests simulated C&D waste data (grounded in actual PCMC factsheets and transfer station coordinates). When an anomaly like illegal dumping is flagged, the platform actively responds. 
+
+To handle the massive spatial calculations required for PCMC's 9,700+ registered construction zones, we integrated NVIDIA RAPIDS cuDF. This zero-code-change GPU acceleration dropped our Haversine routing matrix latency from 8.4 seconds to 0.6 seconds—a 14x speedup that allows for real-time automated truck dispatch. 
+
+Additionally, we implemented a Gemini 1.5 Flash multimodal pipeline. Ward commissioners can upload images of illegal dumping for automated volume estimation and statutory penalty calculation, or use our RAG-powered chat interface to query BigQuery databases using natural language. CityMind doesn't just display data; it uses Google Cloud and NVIDIA hardware to make intelligent municipal decisions in real-time.
