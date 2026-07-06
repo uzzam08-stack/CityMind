@@ -1,3 +1,11 @@
+---
+title: CityMind
+emoji: 🏙️
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+---
 # CityMind
 **Team CodeBenders** | *Optimizing PCMC Construction & Demolition (C&D) waste management through AI-driven decision intelligence.*
 
