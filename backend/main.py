@@ -72,3 +72,24 @@ async def root():
 @app.get("/health")
 async def health():
     return {"status": "healthy"}
+
+# Serve React frontend if available
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
+
+frontend_path = os.path.join(os.path.dirname(__file__), "..", "frontend", "dist")
+if os.path.isdir(frontend_path):
+    # Mount assets folder
+    assets_path = os.path.join(frontend_path, "assets")
+    if os.path.isdir(assets_path):
+        app.mount("/assets", StaticFiles(directory=assets_path), name="assets")
+    
+    # Catch-all for React Router
+    @app.get("/{full_path:path}")
+    async def serve_frontend(full_path: str):
+        file_path = os.path.join(frontend_path, full_path)
+        if os.path.isfile(file_path):
+            return FileResponse(file_path)
+        return FileResponse(os.path.join(frontend_path, "index.html"))
+

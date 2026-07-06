@@ -5,6 +5,7 @@ WORKDIR /app/frontend
 COPY frontend/package*.json ./
 RUN npm ci
 COPY frontend/ ./
+ENV VITE_API_URL=/api
 RUN npm run build
 
 # ── Runtime stage ──────────────────────────────────────────────────────────
